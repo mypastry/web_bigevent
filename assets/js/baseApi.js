@@ -1,5 +1,4 @@
 $.ajaxPrefilter(function(options){
-    console.log(options.url);
 
     options.url = 'http://www.liulongbin.top:3007'+options.url
     if(options.url.indexOf('/my/' !== -1)){
@@ -9,10 +8,8 @@ $.ajaxPrefilter(function(options){
     
     }
     options.complete = function(res){
-        console.log(res);
         
         if(res.responseJSON.status === 1 && res.responseJSON.message === '身份认证失败！'){
-            console.log(111);
             
             localStorage.removeItem('token')
             window.location.href='/login.html'
